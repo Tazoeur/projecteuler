@@ -11,3 +11,4 @@ path = "src/lib.rs"
 [dependencies]
 fraction = "0.6.1"
 plotlib = "0.4.0"
+etcommon-bigint = "0.2.10"
