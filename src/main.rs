@@ -1,5 +1,5 @@
-mod prime;
+extern crate lib_euler;
 
 fn main() {
-    prime::calculate_prime();
+    lib_euler::digit_fifth_powers::solve();
 }

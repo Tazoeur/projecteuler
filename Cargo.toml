@@ -4,4 +4,10 @@ version = "0.1.0"
 authors = ["Guillaume Latour <g0latour@gmail.com>"]
 edition = "2018"
 
+[lib]
+name = "lib_euler"
+path = "src/lib.rs"
+
 [dependencies]
+fraction = "0.6.1"
+plotlib = "0.4.0"
