@@ -7,6 +7,7 @@ pub mod hugeint;
 pub mod digit_fifth_powers;
 pub mod distinct_powers;
 pub mod quadratic_primes;
+pub mod coin_sums;
 
 /**
  * Access to private function of prime module

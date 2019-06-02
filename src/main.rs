@@ -1,13 +1,13 @@
 #![allow(dead_code)]
 
 extern crate lib_euler;
-use std::time::{Duration, Instant};
+use std::time::Instant;
 
 fn main() {
     // start the timer
     let now = Instant::now();
 
-    lib_euler::quadratic_primes::solve();
+    lib_euler::coin_sums::solve();
 
     // display ping-pong informations
     println!(

@@ -1,5 +1,4 @@
 use super::prime;
-use std::thread;
 
 pub fn solve() {
     let mut tab: Vec<(i64, i64)> = Vec::new();
