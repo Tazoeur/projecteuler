@@ -18,7 +18,7 @@ pub fn solve() {
     let max_parsing = (a_to - a_from) * (b_to - b_from);
     let mut parsing: f32 = 0.0;
 
-    for b in b_from..b_to {
+    for b in (b_from..b_to).rev() {
         if ((b as i32).abs() as u64) <= max_n || !prime::is_prime(&((b as i32).abs() as u64)) {
             parsing += (a_to - a_from) as f32;
             continue;
