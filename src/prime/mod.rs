@@ -13,7 +13,7 @@ use std::io::BufReader;
  * 5 -> 11
  * ...
  */
-pub fn get(i: u16) -> u64 {
+pub fn get(i: u32) -> u64 {
     // if i not a right index, return zero
     if i < 1 {
         return 0;
@@ -26,13 +26,13 @@ pub fn get(i: u16) -> u64 {
     };
 
     // while the tab array (filled with prime) does not have the size of the prime we want to get, continue the loop
-    while tab.len() < usize::from(i) {
+    while (tab.len() as u32) < i {
         nbr += 1;
-        if self::is_prime(nbr, &tab) {
+        if self::is_prime_internal(&nbr, &tab) {
             self::add_prime_in_file(nbr, &mut tab);
         }
     }
-    tab[usize::from(i) - 1]
+    tab.get((i - 1) as usize).unwrap().clone()
 }
 
 /**
@@ -40,7 +40,7 @@ pub fn get(i: u16) -> u64 {
  */
 pub fn calculate_prime() {
     let mut a;
-    let mut i: u16 = (self::get_stored_primes().len() - 1) as u16;
+    let mut i: u32 = (self::get_stored_primes().len() - 1) as u32;
     loop {
         i += 1;
         a = self::get(i);
@@ -48,12 +48,40 @@ pub fn calculate_prime() {
     }
 }
 
-fn is_prime(nbr: u64, primes: &Vec<u64>) -> bool {
+pub fn is_prime(n: &u64) -> bool {
+    let last_known_prime = self::get_stored_primes().pop().unwrap();
+    if n <= &last_known_prime {
+        super::utils::is_in_sorted_vector_64(&n, self::get_stored_primes())
+    } else {
+        self::calculate_prime_until(&n);
+        self::is_prime(n)
+    }
+}
+
+fn calculate_prime_until(n: &u64) {
+    let mut a: u64 = 0;
+    let mut i: u32 = (self::get_stored_primes().len() - 1) as u32;
+    while &a < n {
+        i += 1;
+        a = self::get(i);
+        println!("prime #{} = {}", i, &a);
+    }
+}
+
+fn is_prime_internal(nbr: &u64, primes: &Vec<u64>) -> bool {
     // if the nbr can be devided by one of the existing primes,
     // it means that nbr is not a prime number
+    if nbr <= &1 {
+        return false;
+    }
+
     for prime in primes {
         if nbr % prime == 0 {
             return false;
+        }
+
+        if prime >= &(nbr / &2) {
+            break;
         }
     }
     true
