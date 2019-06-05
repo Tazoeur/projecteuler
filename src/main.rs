@@ -7,7 +7,7 @@ fn main() {
     // start the timer
     let now = Instant::now();
 
-    lib_euler::coin_sums::solve();
+    lib_euler::pandigital_products::solve();
 
     // display ping-pong informations
     println!(
