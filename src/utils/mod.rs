@@ -1,3 +1,5 @@
+pub mod math;
+
 /**
  * Split a number into vector of digits
  *

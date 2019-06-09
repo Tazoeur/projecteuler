@@ -1,13 +1,14 @@
 #![allow(dead_code)]
 mod prime;
-mod utils;
+pub mod utils;
 
 pub mod hugeint;
 
+pub mod coin_sums;
 pub mod digit_fifth_powers;
 pub mod distinct_powers;
+pub mod pandigital_products;
 pub mod quadratic_primes;
-pub mod coin_sums;
 
 /**
  * Access to private function of prime module
